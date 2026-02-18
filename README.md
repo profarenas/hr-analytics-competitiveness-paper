@@ -1,30 +1,32 @@
 # HR Analytics Competitiveness Paper
-Código para el paper "What Drives Employee Productivity and Organizational Competitiveness? Evidence from Predictive HR Analytics with External Validation".
-## Descripción
-Este repositorio contiene scripts para preprocesamiento, modelado predictivo (OLS, CART, RF, XGBoost), evaluación y interpretabilidad (SHAP) usando datasets de HR analytics. Utiliza datos públicos de Kaggle (IBM HR Analytics) y datos sintéticos para la compañía (confidencial). El seed fijo es 20260214 para reproducibilidad total.
-## Dependencias
 
-Python 3.10+
-Librerías: numpy, pandas, scipy, scikit-learn, xgboost, shap, joblib (para guardar modelos)
-Instala: pip install numpy pandas scipy scikit-learn xgboost shap joblib
+Code for the paper "What Drives Employee Productivity and Organizational Competitiveness? Evidence from Predictive HR Analytics with External Validation".
 
-## Archivos
+## Description
+This repository contains scripts for preprocessing, predictive modeling (OLS, CART, RF, XGBoost), evaluation, and interpretability (SHAP) using HR analytics datasets. It uses public data from Kaggle (IBM HR Analytics) and synthetic data for the company (confidential). The fixed seed is 20260214 for full reproducibility.
 
-**Generic Data/generate_synthetic_data.py**: Genera datos sintéticos para la compañía (N=500).
-**scripts/preprocess.py**: Preprocesamiento (winsorizing, imputation, feature engineering, splits sin leakage).
-**scripts/train.py**: Entrenamiento de modelos (OLS, CART, RF, XGBoost con grid search).
-**scripts/evaluate.py**: Evaluación (métricas RMSE/MAE/R², bootstrap para CIs, SHAP para interpretabilidad).
+## Dependencies
+- Python 3.10+
+- Libraries: numpy, pandas, scipy, scikit-learn, xgboost, shap, joblib (for saving models)
+Install: `pip install numpy pandas scipy scikit-learn xgboost shap joblib`
 
-## Cómo ejecutar
+## Files
+- **Generic Data/generate_synthetic_data.py**: Generates synthetic data for the company (N=500).
+- **evaluate.py**: Evaluation (RMSE/MAE/R² metrics, bootstrap for CIs, SHAP for interpretability).
+- **preprocess.py**: Preprocessing (winsorizing, imputation, feature engineering, splits without leakage).
+- **train.py**: Model training (OLS, CART, RF, XGBoost with grid search).
 
-Descarga el dataset público de Kaggle: https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset y guárdalo como hr_data.csv en la raíz.
-Corre python Generic Data/generate_synthetic_data.py para generar datos sintéticos de la compañía (guarda synthetic_company_data.csv).
-Corre python scripts/preprocess.py (genera CSVs preprocesados: public_preprocessed.csv y company_preprocessed.csv).
-Corre python scripts/train.py (entrena y guarda modelos .pkl para satisfaction/performance).
-Corre python scripts/evaluate.py (calcula métricas, CIs y genera SHAP plots; guarda evaluation_results.csv).
-Notas: Ajusta paths si es necesario. Para validación externa, usa los CSVs preprocesados de compañía en evaluate.py.
+## How to Run
+1. Download the public Kaggle dataset: [https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset) and save it as `hr_data.csv` in the root.
+2. Run `python Generic Data/generate_synthetic_data.py` to generate synthetic company data (saves `synthetic_company_data.csv`).
+3. Run `python preprocess.py` (generates preprocessed CSVs: public_preprocessed.csv and company_preprocessed.csv).
+4. Run `python train.py` (trains and saves model .pkl files for satisfaction/performance).
+5. Run `python evaluate.py` (computes metrics, CIs, and generates SHAP plots; saves evaluation_results.csv).
 
-## Archivos de salida (ejemplos)
+Notes: Adjust paths if necessary. For external validation, use the preprocessed company CSVs in evaluate.py.
 
-synthetic_company_data.csv: Datos sintéticos generados (agrega cuando subas).
-evaluation_results.csv: Tabla de métricas (RMSE, MAE, R²).
+## Output Files (Examples)
+- synthetic_company_data.csv: Generated synthetic company data.
+- evaluation_results.csv: Table of evaluation metrics (RMSE, MAE, R²).
+
+If you have questions or errors when running, open an issue in this repo.
