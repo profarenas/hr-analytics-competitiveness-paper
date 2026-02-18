@@ -17,7 +17,7 @@ Instala: `pip install numpy pandas scikit-learn xgboost shap`
 - (Agrega más: preprocess.py, train.py, etc., cuando los subas)
 
 ## Cómo ejecutar
-1. Descarga Kaggle dataset: [link a Kaggle].
+1. Descarga Kaggle dataset: https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset
 2. Corre `python generate_synthetic_data.py` para datos de compañía.
 3. Usa los modelos en train.py (próximamente).
 
