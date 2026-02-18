@@ -1,0 +1,17 @@
+# (a) Synthetic data generation example (company data)
+import numpy as np, pandas as pd
+np.random.seed(42)
+N_comp = 500
+company = pd.DataFrame({
+    'satisfaction': np.random.beta(2, 2, N_comp),
+    'performance_eval': np.clip(np.random.beta(3, 2, N_comp)*1.0-0.02, 0, 1),
+    'number_project': np.random.choice([2,3,4,5,6,7], N_comp, p=[0.2,0.25,0.2,0.15,0.1,0.1]),
+    'average_monthly_hours': np.clip(np.random.normal(210,40,N_comp).astype(int), 100, 300),
+    'time_spend_company': np.random.choice(np.arange(2,11), N_comp, p=[0.25,0.2,0.15,0.15,0.1,0.05,0.04,0.03,0.03]),
+    'Work_accident': np.random.binomial(1,0.06,N_comp),
+    'promotion_last_5years': np.random.binomial(1,0.02,N_comp),
+    'department': np.random.choice(['Sales','Technical','Support','Management','IT','Product','Marketing','RandD','Accounting','HR'], N_comp),
+    'salary': np.random.choice(['low','medium','high'], N_comp, p=[0.6,0.3,0.1]),
+    'left': np.random.binomial(1, np.clip(0.30 + 0.4*(0.5-company['satisfaction']),0,1), N_comp)
+})
+# (Public data is provided; here we would load or generate similarly for demonstration.)
